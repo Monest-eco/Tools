@@ -4,6 +4,7 @@ import matplotlib.animation as animation
 from urllib.request import urlopen
 import json
 import time
+from allData import url
 
 arrSeconds = []
 arrData = []
@@ -12,7 +13,6 @@ fig = plt.figure() # initialise la figure
 line, = plt.plot([], []) 
 
 def animate(i): 
-    url = "http://cyrilserver.ddns.net:8080/hardware/esp32/all"
     response = urlopen(url)
     data_json = json.loads(response.read())
     arrData.append(data_json[len(data_json) - 1]["data_esp32"])
